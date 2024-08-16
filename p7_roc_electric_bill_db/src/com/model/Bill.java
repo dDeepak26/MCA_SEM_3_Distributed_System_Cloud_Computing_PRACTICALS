@@ -9,37 +9,24 @@ public class Bill implements Serializable {
 	private String consumerName;
     private Date billDueDate;
     private BigDecimal billAmount;
-
-    // Constructors
+    
     public Bill() {}
-
     public Bill(String consumerName, Date billDueDate, BigDecimal billAmount) {
         this.consumerName = consumerName;
         this.billDueDate = billDueDate;
         this.billAmount = billAmount;
     }
-
-    // Getters and setters
-    public String getConsumerName() {
-        return consumerName;
-    }
-
+    public String getConsumerName() { return consumerName; }
     public void setConsumerName(String consumerName) {
         this.consumerName = consumerName;
     }
 
-    public Date getBillDueDate() {
-        return billDueDate;
-    }
-
+    public Date getBillDueDate() { return billDueDate; }
     public void setBillDueDate(Date billDueDate) {
         this.billDueDate = billDueDate;
     }
 
-    public BigDecimal getBillAmount() {
-        return billAmount;
-    }
-
+    public BigDecimal getBillAmount() {return billAmount; }
     public void setBillAmount(BigDecimal billAmount) {
         this.billAmount = billAmount;
     }

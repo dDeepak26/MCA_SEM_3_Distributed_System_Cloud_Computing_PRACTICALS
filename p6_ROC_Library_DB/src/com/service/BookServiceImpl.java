@@ -7,9 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookServiceImpl extends UnicastRemoteObject implements BookService {
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public BookServiceImpl() throws RemoteException {
