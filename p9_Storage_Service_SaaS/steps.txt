@@ -1,0 +1,100 @@
+storage_service/
+├── mainFirst.py
+├── credentials.json
+├── requirements.txt
+└── token.json (will be created automatically)
+
+1. Create a new directory for your project
+    mkdir storage_service
+    cd storage_service
+
+
+2. main.py code paste the code
+
+
+3. Create a requirements.txt file with the following content:
+    google-auth-oauthlib==0.4.6
+    google-auth-httplib2==0.1.0
+    google-api-python-client==2.47.0
+
+
+4. Install the required packages:
+    pip install -r requirements.txt
+
+
+5. Set up Google Cloud Project and enable Google Drive & Google Doc API:
+
+    Go to the Google Cloud Console:
+        Open your web browser and navigate to https://console.cloud.google.com/
+        If you're not already signed in, you'll need to sign in with your Google account. If you don't have one, you'll need to create it.
+
+    Create a new project:
+        Once you're in the Google Cloud Console, look for the project dropdown near the top of the page.
+        Click on it and then click "New Project" in the window that appears.
+        Give your project a name (e.g., "StorageAsService").
+        Optionally, you can edit the project ID or let Google generate one for you.
+        If you have multiple organizations, select the appropriate one.
+        Click "Create" to create your new project.
+        Wait for the project to be created, then select it from the project dropdown.
+
+    Enable the Google Drive API:
+        In the left sidebar, click on "APIs & Services" > "Library".
+        In the API Library, search for "Google Drive API".
+        Click on the "Google Drive API" card when it appears in the results.
+        On the Google Drive API page, click the "Enable" button.
+        Wait for the API to be enabled.
+
+    Enable the Google Doc API:
+        In the left sidebar, click on "APIs & Services" > "Library".
+        In the API Library, search for "Google Doc API".
+        Click on the "Google Doc API" card when it appears in the results.
+        On the Google Doc API page, click the "Enable" button.
+        Wait for the API to be enabled.
+
+    Create credentials (OAuth 2.0 Client ID):
+        After enabling the API, you might be prompted to create credentials. If not, go to "APIs & Services" > "Credentials" in the left sidebar.
+        At the top of the page, click the "+ Create Credentials" button and select "OAuth client ID" from the dropdown.
+        You may be prompted to configure the OAuth consent screen:
+            Choose "External" if you want to allow any Google user to access your app, or "Internal" if you're part of a Google Workspace organization and only want to allow users within your organization.
+            Choose "External"
+            Fill in the required fields (App name, User support email, Developer contact information).
+            You can leave most other fields as their defaults for now.
+            Click "Save and Continue" through the next screens, then "Back to Dashboard" when you're done.
+        Now, back on the "Create OAuth client ID" page:
+            For "Application type", select "Desktop app".
+            Give your OAuth client a name (e.g., "StorageAsService Desktop Client").
+            Click "Create".
+
+    Download the credentials:
+        After creating the OAuth client ID, you'll see a popup with your client ID and client secret.
+        Click the download button (usually looks like a down arrow) to download the credentials file.
+        This will download a JSON file. Rename this file to credentials.json.
+
+
+    Save the credentials file:
+        Move the credentials.json file into your project directory (where your main.py file is located).
+        Make sure not to share this file or upload it to any public repositories, as it contains sensitive information.
+
+    Add test user:
+        For development and testing purposes, you can add yourself as a test user. 
+        Here's how:
+            a. Go to the Google Cloud Console (https://console.cloud.google.com/).
+            b. Select your project.
+            c. Navigate to "APIs & Services" > "OAuth consent screen".
+            d. Scroll down to the "Test users" section.
+            e. Click "Add Users".
+            f. Add your own Google email address as a test user.
+            g. Save the changes.
+
+6. Running the program:
+    a. Open a terminal and navigate to your project directory.
+    b. Run the script
+python mainFirst.py
+
+
+
+After running the mainFirst.py the token.json file will be created.
+
+Based on the token.json file, you can run the main.py file. Because the authentication is done by using the token.json file.
+
+

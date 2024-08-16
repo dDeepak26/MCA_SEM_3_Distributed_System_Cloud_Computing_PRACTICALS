@@ -1,0 +1,92 @@
+file structure
+
+
+Copy all and code paste change the database details
+
+
+Sql query
+CREATE DATABASE IF NOT EXISTS datetime_db;
+
+USE datetime_db;
+
+CREATE TABLE IF NOT EXISTS date_time_info (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    day VARCHAR(10),
+    time TIME,
+    date DATE,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Optional: Insert a row with current date and time
+INSERT INTO date_time_info (day, time, date)
+VALUES (DAYNAME(NOW()), CURRENT_TIME(), CURRENT_DATE());
+
+
+Add sql jar file
+*  Right-click on your project in the Package Explorer 
+*  Select Properties 
+*  In the left panel, click on "Java Build Path" 
+*  Click on the "Libraries" tab 
+*  Click "Add External JARs" 
+*  Navigate to and select the MySQL Connector/J JAR file 
+*  Click "Apply and Close"
+
+
+# Running the RMI Project in Eclipse
+
+## Step 1: Compile and Start RMI Registry
+
+1. Open your project in Eclipse.
+2. Right-click on your project folder in the Package Explorer.
+3. Select "Properties".
+4. In the left panel, select "Java Build Path".
+5. Click on the "Source" tab.
+6. Ensure that your "src" folder is listed as a source folder.
+7. Click "Apply and Close".
+8. From the main menu, select "Project" > "Clean..." to rebuild your project.
+
+## Step 2: Configure Run Configurations
+
+### For the Server:
+
+1. Right-click on the `Server.java` file in the Package Explorer.
+2. Select "Run As" > "Run Configurations".
+3. In the new window, right-click on "Java Application" and select "New Configuration".
+4. Name it "RMI Server".
+5. In the "Main" tab, ensure the project and main class are correct.
+6. In the "Arguments" tab, add this VM argument: `-Djava.rmi.server.codebase=file:/path/to/your/bin/folder/`
+   Replace "/path/to/your/bin/folder/" with the actual path to your project's bin folder. 
+7. Click "Apply".
+
+
+### For the Client:
+
+1. Right-click on the `Client.java` file in the Package Explorer.
+2. Select "Run As" > "Run Configurations".
+3. In the new window, right-click on "Java Application" and select "New Configuration".
+4. Name it "RMI Client".
+5. In the "Main" tab, ensure the project and main class are correct.
+6. Click "Apply".
+
+
+## Step 3: Run the Application
+
+1. Start the Server:
+   - In the Run Configurations window, select "RMI Server".
+   - Click "Run".
+   - You should see output in the Console indicating that the server is running.
+
+2. Run the Client:
+   - Open a new Console view (Window > Show View > Console).
+   - In the Run Configurations window, select "RMI Client".
+   - Click "Run".
+   - You should see output in the new Console showing the day, time, and date retrieved from the server.
+
+## Troubleshooting
+
+- If you encounter `ClassNotFoundException`, ensure that all your classes are properly compiled and in the correct packages.
+- If you get `java.rmi.ConnectException: Connection refused to host: localhost`, make sure your server is running and that no firewall is blocking the connection.
+- If you see `java.rmi.server.ExportException: Port already in use`, try changing the port number in your `LocateRegistry.createRegistry()` call (in the Server class) and updating the client accordingly.
+
+Remember to run the server first, then the client. The server needs to be running and the RMI registry needs to be set up before the client can connect to it.
+
